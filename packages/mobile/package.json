@@ -1,0 +1,47 @@
+{
+  "name": "@telmeeth/mobile",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "_start": "node ../../node_modules/react-native/local-cli/cli.js start --projectRoot=../../",
+    "deploy": "node ../../node_modules/react-native/local-cli/cli.js bundle  --platform ios --entry-file ./packages/mobile/index.js --bundle-output ./CodePush/main.jsbundle --assets-dest ./CodePush --dev false && appcenter codepush release -c ./CodePush -a masteryo/Telmeeth -d Production -t 1 -m",
+    "deploy:android": "node ../../node_modules/react-native/local-cli/cli.js bundle --platform android --entry-file ./packages/mobile/index.js --bundle-output ./CodePush/main.jsbundle --assets-dest ./CodePush --dev false && appcenter codepush release -c ./CodePush -a masteryo/Telmeeth-1 -d Production -t 1 -m",
+    "android": "npx react-native run-android",
+    "compile": "tsc -b --incremental",
+    "ios": "react-native run-ios",
+    "lint": "eslint .",
+    "prestart": "npm run compile",
+    "start": "concurrently \"npm run compile -- -w\" \"react-native start\"",
+    "studio": "studio android",
+    "test": "jest",
+    "xcode": "open ios/Telmeeth.xcworkspace"
+  },
+  "dependencies": {
+    "@telmeeth/app": "*",
+    "intl": "^1.2.5",
+    "react": "16.11.0",
+    "react-native": "0.61.3",
+    "react-native-maps": "0.25.0",
+    "react-native-restart": "^0.0.13",
+    "react-native-background-geolocation": "3.3.2",
+    "react-native-background-fetch": "2.7.1",
+    "appcenter": "2.3.0",
+    "react-native-code-push": "5.7.0",
+    "@sentry/react-native": "1.0.9",
+    "react-native-version-check": "3.3.0",
+    "react-navigation": "4.0.10"
+  },
+  "devDependencies": {
+    "@babel/core": "7.5.5",
+    "@babel/runtime": "7.5.5",
+    "@react-native-community/eslint-config": "0.0.5",
+    "babel-jest": "24.9.0",
+    "eslint": "6.2.2",
+    "jest": "24.9.0",
+    "metro-react-native-babel-preset": "0.56.0",
+    "react-test-renderer": "16.11.0"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}

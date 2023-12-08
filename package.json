@@ -1,0 +1,47 @@
+{
+  "name": "telmeeth",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "resolutions": {
+    "@types/react": "16.9.11"
+  },
+  "scripts": {
+    "postinstall": "npx jetify",
+    "dev:web": "yarn workspace @telmeeth/web start",
+    "build:web": "yarn workspace @telmeeth/web build",
+    "serve:web": "yarn workspace @telmeeth/web serve",
+    "deploy:web": "yarn workspace @telmeeth/web build && yarn workspace @telmeeth/web deploy",
+    "compile:web": "yarn workspace @telmeeth/web compile",
+    "compile:app": "yarn workspace @telmeeth/app compile",
+    "dev:mobile": "yarn workspace @telmeeth/mobile start",
+    "deploy:mobile": "yarn workspace @telmeeth/mobile deploy",
+    "deploy:mobile:android": "yarn workspace @telmeeth/mobile deploy:android",
+    "generate": "plop --plopfile internals/generators/index.js",
+    "prettify": "prettier --write",
+    "extract-intl": "node ./internals/scripts/extract-intl.js",
+    "android": "yarn workspace @telmeeth/mobile android",
+    "compile": "tsc -b --incremental",
+    "ios": "yarn workspace @telmeeth/mobile ios",
+    "studio": "yarn workspace @telmeeth/mobile studio",
+    "xcode": "yarn workspace @telmeeth/mobile xcode"
+  },
+  "dependencies": {
+    "react-native": "0.61.3"
+  },
+  "devDependencies": {
+    "@types/jest": "24.0.15",
+    "@babel/plugin-transform-typescript": "7.5.5",
+    "babel-plugin-react-intl": "3.0.1",
+    "node-plop": "0.18.0",
+    "plop": "2.3.0",
+    "prettier": "1.17.0",
+    "shelljs": "^0.8.3",
+    "ts-node": "8.3.0",
+    "jetifier": "1.6.4"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "name": "@telmeeth/web",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "_start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "xbuild": "yarn compile && react-app-rewired build && shx rm -rf dist && mv build dist",
+    "compile": "tsc -b",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject",
+    "serve": "serve -s build -l 5001",
+    "deploy": "aws --profile telmeeth s3 sync build/ s3://beta.telmeeth.com",
+    "start": "concurrently \"npm run compile -- -w --incremental\" \"npm run _start\""
+  },
+  "dependencies": {
+    "react-native-web-maps2": "*",
+    "@babel/polyfill": "7.4.0",
+    "@telmeeth/app": "*",
+    "react": "16.11.0",
+    "react-app-polyfill": "0.2.2",
+    "react-art": "16.11.0",
+    "react-dom": "16.11.0",
+    "react-google-maps": "^9.4.5",
+    "react-native-web": "0.11.7",
+    "@react-navigation/web": "1.0.0-alpha.9",
+    "react-scripts": "2.1.8",
+    "resize-observer-polyfill": "1.5.1",
+    "smoothscroll-polyfill": "0.4.3",
+    "@sentry/browser": "5.8.0",
+    "typescript": "3.6.3"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "@types/smoothscroll-polyfill": "^0.3.1",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-react-native-web": "0.11.7",
+    "concurrently": "4.1.2",
+    "react-app-rewired": "2.1.4"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "outDir": "dist",
+    "rootDir": "src",
+    "module": "esnext",
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "typeRoots": ["../../@types", "@types", "../../node_modules/@types"]
+  },
+  "include": ["src/index.tsx"],
+  "references": [
+    {
+      "path": "../app"
+    }
+  ]
+}
